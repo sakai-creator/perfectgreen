@@ -128,3 +128,72 @@ Elite Editorial は「情報を隠す」ではなく「情報の密度を下げ�
   - Matcha Color Chart — 抹茶5段階グラデーションのしおり形状1枚もの
   - Matcha Coaster（5枚組）— シルバー下地・厚盛りニス・ホワイト二度刷り
 - 両商品の詳細ページは作らない。フェスで実物を見て、欲しい人に買ってもらう設計。
+
+---
+
+# SESSION LOG — Day 2
+
+**日付:** 2026年5月22日（木）  
+**セッション名:** PERFECT GREEN プロジェクト Day 2 — 画像統合とポリッシング
+
+---
+
+## 1. 画像統合
+
+- title_010.webp（2.55MB）をヒーロー背景に設定（opacity 0.22）
+- chart_010.webp（421KB）を Matcha Color Chart カードに配置
+- coaster_010.webp（598KB）を Matcha Coaster カードに配置
+- papersample_010.webp（386KB）を paperSampleBook セクションに配置
+- 画像はすべて `~/projects/perfectgreen/images/` に保存
+
+---
+
+## 2. レイアウト変更
+
+- paperSampleBook セクションを2カラム→上下レイアウトに変更
+  - 横長写真の素材を最大限活かす配置
+  - 写真をコンテンツ幅いっぱいに、その下にテキスト全部
+  - `max-width: 52ch` でテキストの行長を制限
+- Matcha 2商品カードに画像を最上部配置、`aspect-ratio: 4/3` で統一
+
+---
+
+## 3. CJK 改行制御の修正
+
+- paperSampleBook 見出し「PERFECT GREEN の」が分断される問題を修正
+- 解決策：`.nowrap { white-space: nowrap; }` をユーティリティクラスとして style.css の Shared Utilities セクションに追加
+- `<span class="nowrap">PERFECT GREEN の</span>` で所有格を一塊として固定
+- index.html と paper.html の両方で適用
+
+---
+
+## 4. コピー調整
+
+- コンタクト見出しを3行から2行に変更
+  - 修正前：「美しい、循環する / ZINEを、 / まずは相談から。」
+  - 修正後：「美しい、循環する / ZINEを、まずは相談から。」
+  - CSS の `max-width: 18ch` → `26ch` に拡張で実現
+
+---
+
+## 5. インフラ整備
+
+- `.gitignore` を追加（.DS_Store、node_modules、IDE設定、ログを除外）
+- git push 成功（コミット 8a67d15）
+
+---
+
+## 6. デザイン判断メモ
+
+- ヒーロー opacity 0.22（0.35 だと文字と画像の細部が干渉、0.20 だと写真の気配が消える、中間値を選定）
+- paperSampleBook 写真とテキストの余白 48px（32px は詰まり、64px は空きすぎ）
+- paperSampleBook の写真は `height: auto`（商品写真なのでトリミング不可）
+- Matcha 2商品は `object-fit: cover`（カード枠に揃えるため）
+- paper.html の見出しは `<br>` で明示制御に統一（ブラウザ任せで「ソムリエ」が分断された失敗から学習）
+
+---
+
+## 7. 次回セッションでやること
+
+- paper Sample Book 表紙への QRコード組み込み
+- フェス当日（5月23日）の現物配布対応

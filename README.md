@@ -17,8 +17,10 @@ PERFECT GREEN は、株式会社スバルグラフィックが立ち上げた、
 - `index.html` — トップページ
 - `paper.html` — paper Sample Book（紙ソムリエが選んだ14種の紙）
 - `style.css` — 共通CSS
+- `images/` — サイトで使用する画像ファイル
 - `DESIGN.md` — デザインシステム（Elite Editorial）
 - `CLAUDE.md` — Claude Code 用のプロジェクト記憶
+- `SESSION_LOG.md` — セッションごとの作業記録
 
 ---
 

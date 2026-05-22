@@ -37,13 +37,20 @@ Claude Code がこのプロジェクトを扱うときに必ず読むファイ�
 
 ```
 ~/projects/perfectgreen/
+├── .gitignore      （.DS_Store / node_modules 等を除外）
 ├── CNAME           （GitHub Pages のカスタムドメイン設定）
 ├── DESIGN.md       （Elite Editorial デザインシステム、編集時は必ず参照）
 ├── README.md       （プロジェクト概要、人間向け）
 ├── CLAUDE.md       （このファイル、Claude Code 起動時に読む）
+├── SESSION_LOG.md  （セッションごとの作業記録）
 ├── index.html      （トップページ）
 ├── paper.html      （paper Sample Book 詳細ページ）
-└── style.css       （共通CSS、index と paper で参照）
+├── style.css       （共通CSS、index と paper で参照）
+└── images/
+    ├── title_010.webp       （ヒーロー背景）
+    ├── chart_010.webp       （Matcha Color Chart）
+    ├── coaster_010.webp     （Matcha Coaster）
+    └── papersample_010.webp （paper Sample Book）
 ```
 
 ---
@@ -79,6 +86,18 @@ text-wrap: balance;
 word-break: keep-all;
 overflow-wrap: break-word;
 ```
+
+### ルール6：CJK 改行制御に .nowrap ユーティリティを使う
+
+日本語と英語が混在する見出しで「PERFECT GREEN の」のような塊が改行で分断されないよう、CSS の `.nowrap` クラス（`white-space: nowrap`）を使う。`&nbsp;` だけでは PERFECT と GREEN の間が改行されてしまうため、span でラップして `.nowrap` を当てる方式を採用している。
+
+```html
+<span class="nowrap">PERFECT GREEN の</span>
+```
+
+### ルール7：.gitignore で OS ゴミファイルを除外
+
+`.DS_Store` などの OS が自動生成するファイルは絶対にコミットしない。`.gitignore` で除外設定済み。新規にゴミファイルが発生し得る環境（IDE、ログなど）は `.gitignore` に追記する。
 
 ---
 
@@ -124,8 +143,17 @@ GitHub Pages が自動でビルド・デプロイ。
 
 ---
 
-## 9. 直近の状態（2026-05-20 時点）
+## 9. 直近の状態（2026-05-22 時点）
 
-サイトは公開済み。フェス出展告知セクション、paper Sample Book 紹介、14種類の紙詳細ページまで実装済み。  
-製品写真（Matcha Color Chart、Matcha Coaster、paper Sample Book）の追加が未着手。  
-5月23日（土）のZINEフェス東京がブランドの公開デビュー。
+Day 1 のサイト初版に加え、Day 2 で以下を実装完了：
+
+- 製品写真4枚を統合（title, chart, coaster, papersample）
+- ヒーロー背景に title_010.webp（opacity 0.22）
+- Matcha 2商品カードに製品写真追加（aspect-ratio 4/3、object-fit: cover）
+- paperSampleBook セクションを上下レイアウトに変更（横長写真の素材を最大化）
+- 見出しの CJK 改行制御を全面修正（.nowrap ユーティリティ導入）
+- コンタクト見出しを3行→2行に
+- .gitignore を追加
+
+5月23日（土）のZINEフェス東京が公開デビュー。  
+残タスク：paper Sample Book 表紙への QRコード組み込み。

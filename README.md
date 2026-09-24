@@ -15,7 +15,6 @@ PERFECT GREEN は、株式会社スバルグラフィックが立ち上げた、
 ## サイト構成
 
 - `index.html` — トップページ
-- `paper.html` — paper Sample Book（紙ソムリエが選んだ14種の紙）
 - `style.css` — 共通CSS
 - `images/` — サイトで使用する画像ファイル
 - `DESIGN.md` — デザインシステム（Elite Editorial）
